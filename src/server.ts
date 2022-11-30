@@ -69,4 +69,20 @@ app.get("/quest/decline", (req, res) => {
   });
 });
 
+app.get("/quest/start/impossible", (req, res) => {
+  res.json({
+   location: "Fairy Land",
+   speech: {
+    speaker: {
+      name: "DIDIER, Destroyer of Worlds",
+      description: "A short but fierce looking demon-thing",
+    },
+    text: "Be prepared to meet your demise! I will strike you with a Dragon's fireball, causing you EXCRUCIATING pain!",
+  },
+  options: {
+    restart: "/",
+  },
+  })
+})
+
 export default app;

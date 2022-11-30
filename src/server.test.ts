@@ -3,7 +3,7 @@ import app from "./server";
 import { MYSTERIOUS_ROBED_FIGURE } from "./constants/characters";
 import { CAVE_EXTERIOR } from "./constants/locations";
 
-test("GET / responds with a welcome message from our mysterious robed figure", async () => {
+test.skip("GET / responds with a welcome message from our mysterious robed figure", async () => {
   const response = await supertest(app).get("/");
 
   expect(response.body).toStrictEqual({
@@ -21,7 +21,7 @@ test("GET / responds with a welcome message from our mysterious robed figure", a
   });
 });
 
-test("GET /quest/accept has our mysterious robed figure give a couple of further choices", async () => {
+test.skip("GET /quest/accept has our mysterious robed figure give a couple of further choices", async () => {
   const response = await supertest(app).get("/quest/accept");
 
   // check the speaker and location are right
@@ -39,7 +39,7 @@ test("GET /quest/accept has our mysterious robed figure give a couple of further
   expect(Object.keys(response.body.options).length).toBeGreaterThanOrEqual(2);
 });
 
-test("GET /quest/decline responds with an apocalyptic message", async () => {
+test.skip("GET /quest/decline responds with an apocalyptic message", async () => {
   const response = await supertest(app).get("/quest/decline");
 
   // located in the apocalypse
@@ -56,7 +56,7 @@ test("GET /quest/decline responds with an apocalyptic message", async () => {
   expect(response.body.options).toStrictEqual({ restart: "/" });
 });
 
-test.skip("GET /quest/start/impossible responds with instant 'death'", async () => {
+test("GET /quest/start/impossible responds with instant 'death'", async () => {
   const response = await supertest(app).get("/quest/start/impossible");
 
   // there is _some_ location
