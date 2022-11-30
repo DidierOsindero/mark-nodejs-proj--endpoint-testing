@@ -93,6 +93,24 @@ test("GET /quest/end/easy responds with the unicorn and a path to complete the q
   expect(response.body.options).toMatchObject({ restart: "/" });
 });
 
+test("GET /quest/complete/easy responds with Jacob in the Celestial City and a complete quest", async () => {
+  const response = await supertest(app).get("/quest/complete/easy");
+
+  // there is _some_ location
+  expect(response.body.location).toMatch(/Celestial City/);
+
+  // there is _some_ speaker
+  expect(response.body.speech.speaker.name).toBe("Jacob");
+
+  // speaker invites you to go to finish the quest
+  expect(response.body.speech.text).toMatch(/completed/g);
+  expect(response.body.speech.text).toMatch(/the end/i);
+  expect(response.body.speech.text).toMatch(/quest/i);
+
+  // includes option to restart
+  expect(response.body.options).toMatchObject({ "play again": "/" });
+});
+
 test("GET /quest/start/hard responds with a Bobby the Wise and a path to Mordor", async () => {
   const response = await supertest(app).get("/quest/start/hard");
 

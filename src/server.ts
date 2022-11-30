@@ -114,6 +114,22 @@ app.get("/quest/end/easy", (req, res) => {
   });
 });
 
+app.get("/quest/complete/easy", (req, res) => {
+  res.json({
+    location: "Celestial City",
+    speech: {
+      speaker: {
+        name: "Jacob",
+        description: "The man himself",
+      },
+      text: "Congratulations, you have overcome many challenges and completed your quest. This is the end of the game!",
+    },
+    options: {
+      "play again": "/",
+    },
+  });
+});
+
 app.get("/quest/start/hard", (req, res) => {
   res.json({
     location: "Fairy Land",
