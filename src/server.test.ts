@@ -56,7 +56,7 @@ test.skip("GET /quest/decline responds with an apocalyptic message", async () =>
   expect(response.body.options).toStrictEqual({ restart: "/" });
 });
 
-test("GET /quest/start/easy responds with a mysterious fairy", async () => {
+test("GET /quest/start/easy responds with Bobby the Wise and a path to Mount Dracon", async () => {
   const response = await supertest(app).get("/quest/start/easy");
 
   // there is _some_ location
@@ -73,7 +73,24 @@ test("GET /quest/start/easy responds with a mysterious fairy", async () => {
   expect(response.body.options).toMatchObject({ restart: "/" });
 });
 
-test("GET /quest/start/impossible responds with instant 'death'", async () => {
+test("GET /quest/start/hard responds with a Bobby the Wise and a path to Mordor", async () => {
+  const response = await supertest(app).get("/quest/start/hard");
+
+  // there is _some_ location
+  expect(response.body.location).toBeDefined();
+
+  // there is _some_ speaker
+  expect(response.body.speech.speaker.name).toBeDefined();
+
+  // speaker invites you to go to Mordor
+  expect(response.body.speech.text).toMatch(/Mordor/);
+  expect(response.body.speech.text).toMatch(/orcs/i);
+
+  // includes option to restart
+  expect(response.body.options).toMatchObject({ restart: "/" });
+});
+
+test("GET /quest/start/impossible responds with almost certain death!", async () => {
   const response = await supertest(app).get("/quest/start/impossible");
 
   // there is _some_ location

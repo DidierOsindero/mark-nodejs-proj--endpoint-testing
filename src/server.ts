@@ -85,6 +85,22 @@ app.get("/quest/start/easy", (req, res) => {
   })
 })
 
+app.get("/quest/start/hard", (req, res) => {
+  res.json({
+   location: "Fairy Land",
+   speech: {
+    speaker: {
+      name: "Davide the Devious",
+      description: "The most devious snake you'll ever meet",
+    },
+    text: "Ssssssalut....Take the path /quest/boss/hard to fight the orcs at Mordor",
+  },
+  options: {
+    restart: "/",
+  },
+  })
+})
+
 app.get("/quest/start/impossible", (req, res) => {
   res.json({
    location: "Fairy Land",
