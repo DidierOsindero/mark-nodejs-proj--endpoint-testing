@@ -69,6 +69,22 @@ app.get("/quest/decline", (req, res) => {
   });
 });
 
+app.get("/quest/start/easy", (req, res) => {
+  res.json({
+   location: "Fairy Land",
+   speech: {
+    speaker: {
+      name: "Bobby the Wise",
+      description: "The wisest gheezer you'll ever meet",
+    },
+    text: "Alright mate? Take the path /quest/boss/easy to fight the dragon at Mount Dracon",
+  },
+  options: {
+    restart: "/",
+  },
+  })
+})
+
 app.get("/quest/start/impossible", (req, res) => {
   res.json({
    location: "Fairy Land",

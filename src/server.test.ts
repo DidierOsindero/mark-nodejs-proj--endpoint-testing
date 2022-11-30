@@ -56,6 +56,23 @@ test.skip("GET /quest/decline responds with an apocalyptic message", async () =>
   expect(response.body.options).toStrictEqual({ restart: "/" });
 });
 
+test("GET /quest/start/easy responds with a mysterious fairy", async () => {
+  const response = await supertest(app).get("/quest/start/easy");
+
+  // there is _some_ location
+  expect(response.body.location).toBeDefined();
+
+  // there is _some_ speaker
+  expect(response.body.speech.speaker.name).toBeDefined();
+
+  // speaker invites you to go to Mount Dracon
+  expect(response.body.speech.text).toMatch(/Mount Dracon/);
+  expect(response.body.speech.text).toMatch(/dragon/i);
+
+  // includes option to restart
+  expect(response.body.options).toMatchObject({ restart: "/" });
+});
+
 test("GET /quest/start/impossible responds with instant 'death'", async () => {
   const response = await supertest(app).get("/quest/start/impossible");
 
