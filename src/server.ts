@@ -98,6 +98,22 @@ app.get("/quest/middle/easy", (req, res) => {
   });
 });
 
+app.get("/quest/end/easy", (req, res) => {
+  res.json({
+    location: "Fires of Mount Dracon",
+    speech: {
+      speaker: {
+        name: "Madame Unicorn",
+        description: "A silver unicorn of great elegance",
+      },
+      text: "Wow, you are a great quester! Well done for making it this far! Simply put this gold ring on and follow the path to /quest/complete to finish your quest!",
+    },
+    options: {
+      restart: "/",
+    },
+  });
+});
+
 app.get("/quest/start/hard", (req, res) => {
   res.json({
     location: "Fairy Land",
