@@ -1,6 +1,9 @@
 import supertest from "supertest";
 import app from "./server";
-import { ADVENTURE_ADMIN, MYSTERIOUS_ROBED_FIGURE } from "./constants/characters";
+import {
+  ADVENTURE_ADMIN,
+  MYSTERIOUS_ROBED_FIGURE,
+} from "./constants/characters";
 import { CAVE_EXTERIOR } from "./constants/locations";
 
 test.skip("GET / responds with a welcome message from our mysterious robed figure", async () => {
@@ -10,8 +13,7 @@ test.skip("GET / responds with a welcome message from our mysterious robed figur
     location: CAVE_EXTERIOR,
     speech: {
       speaker: MYSTERIOUS_ROBED_FIGURE,
-      text:
-        "Welcome, young adventurer, to the ENDPOINT ADVENTURE. Are you ready for this quest?",
+      text: "Welcome, young adventurer, to the ENDPOINT ADVENTURE. Are you ready for this quest?",
     },
     options: {
       yes: "/quest/accept",
@@ -118,12 +120,12 @@ test("GET /help responds a description of the game", async () => {
   expect(response.body.speech.speaker).toBeDefined();
 
   // check speaker is the ADVENTURE_ADMIN character
-  expect(response.body.speech.speaker).toMatchObject(ADVENTURE_ADMIN)
+  expect(response.body.speech.speaker).toMatchObject(ADVENTURE_ADMIN);
 
   // there is some speech text with a few key words in it
   expect(response.body.speech.text).toMatch(/endpoint/i);
   expect(response.body.speech.text).toMatch(/adventure/i);
 
-    // includes option to go to start
-    expect(response.body.options).toMatchObject({ backToStart: "/" });
-})
+  // includes option to go to start
+  expect(response.body.options).toMatchObject({ backToStart: "/" });
+});

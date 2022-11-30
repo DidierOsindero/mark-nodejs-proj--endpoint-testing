@@ -12,8 +12,7 @@ app.get("/", (req, res) => {
     location: CAVE_EXTERIOR,
     speech: {
       speaker: MYSTERIOUS_ROBED_FIGURE,
-      text:
-        "Welcome, young adventurer, to the ENDPOINT ADVENTURE. Are you ready for this quest?",
+      text: "Welcome, young adventurer, to the ENDPOINT ADVENTURE. Are you ready for this quest?",
     },
     options: {
       yes: "/quest/accept",
@@ -28,8 +27,7 @@ app.get("/help", (req, res) => {
     location: HANDFORTH_PARISH_COUNCIL,
     speech: {
       speaker: ADVENTURE_ADMIN,
-      text:
-        "This is the endpoint adventure! It's based on the classic 'choose your own adventure' books of ye olden 20th century times. When you visit an endpoint, you're presented with a scene and some text, and then you have a few options to choose from - your simulate turning to a new page by hitting a new endpoint.",
+      text: "This is the endpoint adventure! It's based on the classic 'choose your own adventure' books of ye olden 20th century times. When you visit an endpoint, you're presented with a scene and some text, and then you have a few options to choose from - your simulate turning to a new page by hitting a new endpoint.",
     },
     options: {
       backToStart: "/",
@@ -42,8 +40,7 @@ app.get("/quest/accept", (req, res) => {
     location: CAVE_EXTERIOR,
     speech: {
       speaker: MYSTERIOUS_ROBED_FIGURE,
-      text:
-        "Ah, yes, that is a wise decision. Now, tell me, what sort of questing experience do you have?",
+      text: "Ah, yes, that is a wise decision. Now, tell me, what sort of questing experience do you have?",
     },
     options: {
       rookie: "/quest/start/easy",
@@ -71,50 +68,50 @@ app.get("/quest/decline", (req, res) => {
 
 app.get("/quest/start/easy", (req, res) => {
   res.json({
-   location: "Fairy Land",
-   speech: {
-    speaker: {
-      name: "Bobby the Wise",
-      description: "The wisest gheezer you'll ever meet",
+    location: "Fairy Land",
+    speech: {
+      speaker: {
+        name: "Bobby the Wise",
+        description: "The wisest gheezer you'll ever meet",
+      },
+      text: "Alright mate? Take the path /quest/boss/easy to fight the dragon at Mount Dracon",
     },
-    text: "Alright mate? Take the path /quest/boss/easy to fight the dragon at Mount Dracon",
-  },
-  options: {
-    restart: "/",
-  },
-  })
-})
+    options: {
+      restart: "/",
+    },
+  });
+});
 
 app.get("/quest/start/hard", (req, res) => {
   res.json({
-   location: "Fairy Land",
-   speech: {
-    speaker: {
-      name: "Davide the Devious",
-      description: "The most devious snake you'll ever meet",
+    location: "Fairy Land",
+    speech: {
+      speaker: {
+        name: "Davide the Devious",
+        description: "The most devious snake you'll ever meet",
+      },
+      text: "Ssssssalut....Take the path /quest/boss/hard to fight the orcs at Mordor",
     },
-    text: "Ssssssalut....Take the path /quest/boss/hard to fight the orcs at Mordor",
-  },
-  options: {
-    restart: "/",
-  },
-  })
-})
+    options: {
+      restart: "/",
+    },
+  });
+});
 
 app.get("/quest/start/impossible", (req, res) => {
   res.json({
-   location: "Fairy Land",
-   speech: {
-    speaker: {
-      name: "DIDIER, Destroyer of Worlds",
-      description: "A short but fierce looking demon-thing",
+    location: "Fairy Land",
+    speech: {
+      speaker: {
+        name: "DIDIER, Destroyer of Worlds",
+        description: "A short but fierce looking demon-thing",
+      },
+      text: "Be prepared to meet your demise! I will strike you with a Dragon's fireball, causing you EXCRUCIATING pain!",
     },
-    text: "Be prepared to meet your demise! I will strike you with a Dragon's fireball, causing you EXCRUCIATING pain!",
-  },
-  options: {
-    restart: "/",
-  },
-  })
-})
+    options: {
+      restart: "/",
+    },
+  });
+});
 
 export default app;
