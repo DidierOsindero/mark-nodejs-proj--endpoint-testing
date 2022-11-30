@@ -75,6 +75,24 @@ test("GET /quest/start/easy responds with Bobby the Wise and a path to Mount Dra
   expect(response.body.options).toMatchObject({ restart: "/" });
 });
 
+test("GET /quest/middle/easy responds with the dragon and a path to the fires of Mount Dracon", async () => {
+  const response = await supertest(app).get("/quest/middle/easy");
+
+  // there is _some_ location
+  expect(response.body.location).toMatch(/Mount Dracon/);
+
+  // there is _some_ speaker
+  expect(response.body.speech.speaker.name).toBe("Dragon of Dracon");
+
+  // speaker invites you to go to the fires of Mount Dracon
+  expect(response.body.speech.text).toMatch(/Mount Dracon/);
+  expect(response.body.speech.text).toMatch(/dragon/i);
+  expect(response.body.speech.text).toMatch(/fires/i);
+
+  // includes option to restart
+  expect(response.body.options).toMatchObject({ restart: "/" });
+});
+
 test("GET /quest/start/hard responds with a Bobby the Wise and a path to Mordor", async () => {
   const response = await supertest(app).get("/quest/start/hard");
 

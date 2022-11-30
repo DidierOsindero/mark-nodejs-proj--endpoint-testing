@@ -74,7 +74,23 @@ app.get("/quest/start/easy", (req, res) => {
         name: "Bobby the Wise",
         description: "The wisest gheezer you'll ever meet",
       },
-      text: "Alright mate? Take the path /quest/boss/easy to fight the dragon at Mount Dracon",
+      text: "Alright mate? Take the path /quest/middle/easy to fight the dragon at Mount Dracon",
+    },
+    options: {
+      restart: "/",
+    },
+  });
+});
+
+app.get("/quest/middle/easy", (req, res) => {
+  res.json({
+    location: "Mount Dracon",
+    speech: {
+      speaker: {
+        name: "Dragon of Dracon",
+        description: "The friendliest dragon you'll ever have the honour of meeting!",
+      },
+      text: "Pleasure to meet you! I'm Dragon of Dracon. You didn't think this was a boss battle did you? I hate violence! Take the path /quest/end/easy to enter into the fires of Mount Dracon",
     },
     options: {
       restart: "/",
