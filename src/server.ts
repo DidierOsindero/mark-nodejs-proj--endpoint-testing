@@ -88,7 +88,8 @@ app.get("/quest/middle/easy", (req, res) => {
     speech: {
       speaker: {
         name: "Dragon of Dracon",
-        description: "The friendliest dragon you'll ever have the honour of meeting!",
+        description:
+          "The friendliest dragon you'll ever have the honour of meeting!",
       },
       text: "Pleasure to meet you! I'm Dragon of Dracon. You didn't think this was a boss battle did you? I hate violence! Take the path /quest/end/easy to enter into the fires of Mount Dracon",
     },
